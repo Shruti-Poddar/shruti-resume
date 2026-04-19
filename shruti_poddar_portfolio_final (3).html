@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Shruti Poddar: Marketing Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+<style>
+:root {
+  --linen:    #F9F7F2;
+  --walnut:   #3C2F2F;
+  --turmeric: #D4A017;
+  --sage:     #8A9A5B;
+  --cream:    #F2EDE4;
+  --border:   #E4DDD3;
+  --muted:    #8C7B73;
+  --light:    #C9C0B5;
+  --white:    #ffffff;
+
+  --f-head: 'DM Sans', sans-serif;
+  --f-body: 'Mulish', sans-serif;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--f-body);
+  background: var(--linen);
+  color: var(--walnut);
+  font-size: 15px;
+  line-height: 1.75;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* paper texture overlay */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 9000;
+  pointer-events: none; opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px;
+}
+
+/* cursor */
+.cur-dot {
+  position: fixed; z-index: 9999; pointer-events: none;
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--turmeric);
+  transform: translate(-50%,-50%);
+  will-change: transform;
+}
+.cur-ring {
+  position: fixed; z-index: 9998; pointer-events: none;
+  width: 30px; height: 30px; border-radius: 50%;
+  border: 1px solid var(--walnut);
+  transform: translate(-50%,-50%);
+  will-change: transform;
+  transition: width 0.3s var(--ease-out), height 0.3s var(--ease-out), opacity 0.2s;
+  opacity: 0.3;
+}
+.cur-ring.hov { width: 46px; height: 46px; opacity: 0.7; border-color: var(--turmeric); }
+
+/* ============================================================
+   TOP BAR
+   ============================================================ */
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 3.5rem;
+  background: rgba(249, 247, 242, 0.96);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.topbar-name {
+  font-family: var(--f-head);
+  font-size: 0.92rem; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--walnut);
+}
+.topbar-name span { color: var(--turmeric); }
+
+.nav { display: flex; gap: 0.25rem; }
+.nav-btn {
+  font-family: var(--f-body);
+  font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.38rem 0.9rem;
+  background: transparent; border: 1px solid transparent;
+  color: var(--muted); cursor: none;
+  transition: color 0.2s, border-color 0.2s;
+}
+.nav-btn:hover { color: var(--walnut); }
+.nav-btn.active { color: var(--walnut); border-color: var(--border); background: var(--cream); }
+
+/* ============================================================
+   PAGES
+   ============================================================ */
+.page { display: none; padding-top: 5.5rem; min-height: 100vh; }
+.page.visible { display: block; }
+.container { max-width: 960px; margin: 0 auto; padding: 0 3.5rem; }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  padding: 5rem 0 4.5rem;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 6rem;
+  align-items: start;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-eyebrow {
+  font-size: 0.68rem; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 1.8rem;
+}
+
+.hero-headline {
+  font-family: var(--f-head);
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--walnut);
+  margin-bottom: 0.4rem;
+}
+.hero-headline strong {
+  font-weight: 700;
+  display: block;
+}
+
+.hero-rule {
+  width: 40px; height: 2px;
+  background: var(--turmeric);
+  margin: 1.6rem 0;
+}
+
+.hero-sub {
+  font-size: 0.92rem; color: var(--muted);
+  line-height: 1.95; max-width: 460px;
+  margin-bottom: 2.2rem; font-weight: 300;
+}
+.hero-sub strong { color: var(--walnut); font-weight: 600; }
+
+.tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 2.2rem; }
+.tag {
+  font-size: 0.65rem; font-weight: 500;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  padding: 5px 12px;
+  border: 1px solid var(--border);
+  color: var(--muted); background: transparent;
+  transition: border-color 0.2s, color 0.2s;
+}
+.tag:hover { border-color: var(--turmeric); color: var(--walnut); }
+
+.cta-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.cpill {
+  font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 9px 20px;
+  border: 1px solid var(--walnut); color: var(--walnut);
+  text-decoration: none; display: inline-block;
+  transition: background 0.2s, color 0.2s; cursor: none;
+}
+.cpill:hover { background: var(--walnut); color: var(--linen); }
+.cpill-accent {
+  background: var(--turmeric); color: var(--walnut) !important;
+  border-color: var(--turmeric) !important; font-weight: 700;
+}
+.cpill-accent:hover { background: var(--walnut) !important; color: var(--linen) !important; border-color: var(--walnut) !important; }
+.cpill-ghost { border-color: var(--border); color: var(--muted); }
+.cpill-ghost:hover { background: var(--cream); color: var(--walnut); border-color: var(--walnut); }
+
+/* hero right : stats */
+.hero-right { padding-top: 1rem; }
+
+.stat-eyebrow {
+  font-size: 0.65rem; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--light); margin-bottom: 1.2rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.stat-block { display: grid; gap: 0; }
+.stat-item {
+  padding: 1.2rem 0;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: baseline; gap: 1rem;
+}
+.stat-item:last-child { border-bottom: none; }
+.stat-num {
+  font-family: var(--f-head);
+  font-size: 1.6rem; font-weight: 700;
+  color: var(--turmeric); line-height: 1;
+  white-space: nowrap; min-width: 68px;
+}
+.stat-desc {
+  font-size: 0.72rem; color: var(--muted);
+  line-height: 1.55; font-weight: 400;
+}
+
+/* ============================================================
+   SECTION HEADER
+   ============================================================ */
+.section-header {
+  display: flex; align-items: baseline;
+  justify-content: space-between;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2.8rem;
+}
+.section-title {
+  font-family: var(--f-head);
+  font-size: 1.5rem; font-weight: 600;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--walnut);
+}
+.section-count {
+  font-size: 0.65rem; font-weight: 500;
+  color: var(--light); letter-spacing: 0.1em; text-transform: uppercase;
+}
+
+/* ============================================================
+   WORK
+   ============================================================ */
+#work .container { padding-top: 3.5rem; padding-bottom: 6rem; }
+
+.intro-note {
+  font-size: 0.75rem; font-weight: 400;
+  color: var(--light); letter-spacing: 0.04em;
+  margin-bottom: 1.6rem;
+}
+
+.work-grid { display: grid; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+
+.card {
+  background: var(--linen);
+  cursor: none; overflow: hidden;
+  transition: background 0.2s;
+}
+.card:hover { background: var(--cream); }
+
+.card-top {
+  padding: 1.6rem 2rem 1.4rem;
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 1.5rem; align-items: start;
+}
+
+.card-badge {
+  font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 3px 9px; display: inline-block; margin-bottom: 0.7rem;
+}
+.b-outcome  { color: var(--sage);     border: 1px solid var(--sage);     background: transparent; }
+.b-strategy { color: #6b7fbf;         border: 1px solid #6b7fbf;         background: transparent; }
+.b-craft    { color: var(--turmeric); border: 1px solid var(--turmeric); background: transparent; }
+.b-research { color: var(--muted);    border: 1px solid var(--border);    background: transparent; }
+.b-lead     { color: #b07060;         border: 1px solid #b07060;         background: transparent; }
+
+.card-title {
+  font-family: var(--f-head);
+  font-size: 0.97rem; font-weight: 600;
+  line-height: 1.4; margin-bottom: 0.3rem; color: var(--walnut);
+  letter-spacing: -0.01em;
+}
+.card-org {
+  font-size: 0.7rem; color: var(--muted); font-weight: 400;
+  margin-bottom: 0.8rem; font-style: italic;
+}
+.chips { display: flex; flex-wrap: wrap; gap: 5px; }
+.chip {
+  font-size: 0.6rem; font-weight: 500;
+  padding: 2px 8px;
+  border: 1px solid var(--border); color: var(--light);
+  letter-spacing: 0.04em; text-transform: uppercase;
+}
+.card-toggle {
+  font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--light); white-space: nowrap;
+  padding-top: 3px; user-select: none;
+  transition: color 0.2s;
+}
+.card:hover .card-toggle { color: var(--turmeric); }
+
+/* Detail */
+.card-detail {
+  display: none;
+  padding: 1.6rem 2rem 2rem;
+  border-top: 1px solid var(--border);
+  background: var(--cream);
+}
+.card-detail.open {
+  display: block;
+  animation: fadeDown 0.24s var(--ease-out) both;
+}
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.pull-stat {
+  display: flex; align-items: baseline; gap: 1.2rem;
+  padding: 1.1rem 1.4rem;
+  background: var(--walnut); color: var(--linen);
+  margin-bottom: 1.4rem; flex-wrap: wrap;
+}
+.pull-num {
+  font-family: var(--f-head); font-size: 2rem; font-weight: 700;
+  color: var(--turmeric); line-height: 1; white-space: nowrap;
+}
+.pull-label { font-size: 0.78rem; color: var(--light); line-height: 1.55; font-weight: 300; }
+
+.mini-stats {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); margin-bottom: 1.4rem;
+}
+.mini-stat {
+  background: var(--linen); padding: 0.9rem 0.75rem; text-align: center;
+}
+.mini-stat-n {
+  font-family: var(--f-head); font-size: 1.5rem; font-weight: 700;
+  color: var(--turmeric);
+}
+.mini-stat-l {
+  font-size: 0.6rem; color: var(--muted); margin-top: 2px;
+  letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500;
+}
+
+.dlabel {
+  font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--turmeric); margin: 1rem 0 0.4rem;
+}
+.dbody {
+  font-size: 0.86rem; color: var(--walnut);
+  line-height: 1.9; font-weight: 300;
+}
+.dbody b { font-weight: 700; color: var(--walnut); }
+
+.blockquote {
+  border-left: 2px solid var(--turmeric);
+  padding: 0.7rem 1.1rem; margin: 1rem 0;
+  font-style: italic; font-size: 0.84rem;
+  color: var(--muted); line-height: 1.8;
+}
+.copy-line {
+  border-left: 2px solid var(--sage);
+  padding: 0.45rem 1rem; font-style: italic;
+  font-size: 0.85rem; color: var(--walnut);
+  margin-bottom: 5px; line-height: 1.5;
+}
+.dnote {
+  font-size: 0.67rem; color: var(--light); font-style: italic;
+  border-top: 1px solid var(--border); padding-top: 0.7rem; margin-top: 1rem;
+}
+
+/* ============================================================
+   SKILLS
+   ============================================================ */
+#skills .container { padding-top: 3.5rem; padding-bottom: 6rem; }
+
+.skills-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border);
+  margin-bottom: 3rem;
+}
+.skill-block {
+  background: var(--linen); padding: 1.6rem;
+  transition: background 0.2s;
+}
+.skill-block:hover { background: var(--cream); }
+.skill-name {
+  font-family: var(--f-head); font-size: 0.88rem;
+  font-weight: 600; margin-bottom: 0.45rem;
+  color: var(--walnut); letter-spacing: -0.01em;
+}
+.skill-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.8; font-weight: 300; }
+.skill-bar-bg {
+  margin-top: 1rem; height: 2px; background: var(--border);
+}
+.skill-bar { height: 2px; background: var(--turmeric); }
+
+.tools-section { padding-top: 2rem; border-top: 1px solid var(--border); }
+.tools-label {
+  font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--light); margin-bottom: 1rem;
+}
+.tool-pill {
+  display: inline-block;
+  font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 6px 14px; border: 1px solid var(--border);
+  color: var(--muted); background: var(--linen);
+  margin: 0 5px 7px 0;
+  transition: border-color 0.2s, color 0.2s, background 0.2s; cursor: none;
+}
+.tool-pill:hover { border-color: var(--walnut); color: var(--walnut); background: var(--cream); }
+
+/* ============================================================
+   ABOUT
+   ============================================================ */
+#about .container { padding-top: 3.5rem; padding-bottom: 6rem; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
+
+.about-label {
+  font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--light); margin-bottom: 1.2rem;
+  padding-bottom: 0.6rem; border-bottom: 1px solid var(--border);
+}
+
+.edu-item {
+  padding: 1rem 0; border-bottom: 1px solid var(--border);
+  display: grid; grid-template-columns: 72px 1fr; gap: 0.8rem;
+}
+.edu-item:last-child { border-bottom: none; }
+.edu-yr {
+  font-size: 0.63rem; font-weight: 500; color: var(--light);
+  letter-spacing: 0.04em; padding-top: 3px;
+}
+.edu-name { font-family: var(--f-head); font-size: 0.9rem; font-weight: 600; margin-bottom: 2px; color: var(--walnut); }
+.edu-deg  { font-size: 0.74rem; color: var(--muted); font-weight: 300; }
+.edu-res  { font-size: 0.74rem; font-weight: 700; color: var(--turmeric); margin-top: 3px; }
+
+.cert-grid { display: grid; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.cert-item { background: var(--linen); padding: 0.85rem 1rem; transition: background 0.2s; }
+.cert-item:hover { background: var(--cream); }
+.cert-name { font-size: 0.83rem; font-weight: 600; color: var(--walnut); }
+.cert-by   { font-size: 0.68rem; color: var(--light); margin-top: 2px; font-weight: 400; letter-spacing: 0.04em; }
+
+.accom-grid { display: grid; gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 3rem; }
+.accom-item {
+  background: var(--linen); padding: 1.1rem 1.4rem;
+  display: flex; gap: 1.2rem; align-items: flex-start;
+  transition: background 0.2s;
+}
+.accom-item:hover { background: var(--cream); }
+.accom-tag  {
+  font-size: 0.57rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--turmeric); white-space: nowrap;
+  border-right: 1px solid var(--border);
+  padding-right: 1.2rem; min-width: 88px;
+  padding-top: 2px;
+}
+.accom-text { font-size: 0.83rem; line-height: 1.65; color: var(--walnut); font-weight: 300; }
+.accom-text b { font-weight: 700; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer-strip {
+  background: var(--walnut); margin-top: 4rem;
+  padding: 1.8rem 3.5rem;
+  display: flex; align-items: center;
+  justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+}
+.footer-name {
+  font-family: var(--f-head); font-size: 0.9rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--linen);
+}
+.footer-name span { color: var(--turmeric); }
+.footer-right {
+  font-size: 0.63rem; font-weight: 400;
+  color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;
+}
+
+/* ============================================================
+   REVEALS
+   ============================================================ */
+.reveal {
+  opacity: 0; transform: translateY(16px);
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+}
+.reveal.in { opacity: 1; transform: none; }
+
+.stagger > * {
+  opacity: 0; transform: translateY(12px);
+  transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+}
+.stagger.in > *:nth-child(1) { opacity:1;transform:none;transition-delay:0.00s }
+.stagger.in > *:nth-child(2) { opacity:1;transform:none;transition-delay:0.06s }
+.stagger.in > *:nth-child(3) { opacity:1;transform:none;transition-delay:0.12s }
+.stagger.in > *:nth-child(4) { opacity:1;transform:none;transition-delay:0.18s }
+.stagger.in > *:nth-child(5) { opacity:1;transform:none;transition-delay:0.24s }
+.stagger.in > *:nth-child(6) { opacity:1;transform:none;transition-delay:0.30s }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  body { cursor: auto; }
+  .cur-dot, .cur-ring { display: none; }
+  .topbar { padding: 0.9rem 1.5rem; }
+  .container { padding: 0 1.5rem; }
+  .hero { grid-template-columns: 1fr; gap: 2.5rem; padding: 3rem 0 2.5rem; }
+  .hero-headline { font-size: clamp(2.4rem, 10vw, 3rem); }
+  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .mini-stats { grid-template-columns: repeat(3,1fr); }
+  .accom-item { flex-direction: column; gap: 0.5rem; }
+  .accom-tag { border-right: none; border-bottom: 1px solid var(--border); padding-right: 0; padding-bottom: 0.5rem; }
+  .footer-strip { padding: 1.4rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="cur-dot" id="cur"></div>
+<div class="cur-ring" id="ring"></div>
+
+<header class="topbar">
+  <div class="topbar-name">Shruti Poddar<span>.</span></div>
+  <nav class="nav">
+    <button class="nav-btn active" onclick="show('home')">Home</button>
+    <button class="nav-btn" onclick="show('work')">Work</button>
+    <button class="nav-btn" onclick="show('skills')">Skills</button>
+    <button class="nav-btn" onclick="show('about')">About</button>
+  </nav>
+</header>
+
+<!-- ============================================================
+     HOME
+     ============================================================ -->
+<main id="home" class="page visible">
+  <div class="container">
+    <section class="hero">
+
+      <div>
+        <p class="hero-eyebrow">Marketing Portfolio &nbsp;·&nbsp; 2025</p>
+        <h1 class="hero-headline">
+          Shruti
+          <strong>Poddar</strong>
+        </h1>
+        <div class="hero-rule"></div>
+        <p class="hero-sub">
+          MBA Marketing candidate at the intersection of
+          <strong>consumer research and creative strategy.</strong>
+          Agency-trained at Ogilvy. Startup-tested at TIGP.
+          I find the insight, then figure out what to do with it.
+        </p>
+        <div class="tag-row">
+          <span class="tag">Brand strategy</span>
+          <span class="tag">Consumer research</span>
+          <span class="tag">Campaign ideation</span>
+          <span class="tag">Copywriting</span>
+          <span class="tag">Competitor analysis</span>
+          <span class="tag">Content &amp; digital</span>
+        </div>
+        <div class="cta-row">
+          <a href="mailto:shrutimpoddar@gmail.com" class="cpill cpill-accent">Email me</a>
+          <span class="cpill cpill-ghost">+91 93202 57700</span>
+          <a href="#" class="cpill cpill-ghost">LinkedIn</a>
+          <span class="cpill cpill-ghost">Mumbai</span>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <p class="stat-eyebrow">At a glance</p>
+        <div class="stat-block">
+          <div class="stat-item">
+            <div class="stat-num">₹80K</div>
+            <div class="stat-desc">Client revenue converted in month 2 of startup internship</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">9+</div>
+            <div class="stat-desc">Industries researched at Ogilvy · 26 sub-brands studied</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">14+</div>
+            <div class="stat-desc">Retail locations audited for Naturell capstone</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">#13</div>
+            <div class="stat-desc">of 700 students · SPI rank at KJSIM · 9.0 GPA</div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <div class="container">
+    <footer class="footer-strip">
+      <div class="footer-name">Shruti Poddar<span>.</span></div>
+      <div class="footer-right">MBA Marketing · KJSIM · Mumbai · 2025</div>
+    </footer>
+  </div>
+</main>
+
+<!-- ============================================================
+     WORK
+     ============================================================ -->
+<main id="work" class="page">
+  <div class="container">
+
+    <div class="section-header reveal">
+      <h2 class="section-title">Work</h2>
+      <span class="section-count">06 case studies</span>
+    </div>
+
+    <p class="intro-note">Click any card to read the full story.</p>
+
+    <div class="work-grid stagger">
+
+      <div class="card" onclick="toggle('c1')">
+        <div class="card-top">
+          <div>
+            <div class="card-badge b-outcome">Measurable outcome</div>
+            <div class="card-title">From lead to client: sales, content and shoots at TIGP</div>
+            <div class="card-org">The International Glamour Project · 3 months, 2023 · Marketing Intern</div>
+            <div class="chips">
+              <span class="chip">Lead conversion</span><span class="chip">Content planning</span><span class="chip">Client servicing</span><span class="chip">Shoot support</span>
+            </div>
+          </div>
+          <div class="card-toggle" id="t-c1">+ expand</div>
+        </div>
+        <div class="card-detail" id="c1">
+          <div class="pull-stat">
+            <div class="pull-num">₹80,000</div>
+            <div class="pull-label">Client revenue brought in through lead conversion in <b>month 2</b> of internship</div>
+          </div>
+          <div class="dlabel">Context</div>
+          <div class="dbody">TIGP was my first real marketing role, <b>a startup with no playbook.</b> I joined as a marketing intern and ended up doing content, sales outreach, client management and production support, often on the same day.</div>
+          <div class="dlabel">What I did</div>
+          <div class="dbody">I owned the <b>full sales funnel:</b> outreach, relationship building and close. In month 2, I converted a lead worth <b>₹80,000</b> through consistent follow-up and communicating value clearly.<br><br>Alongside sales, I handled <b>social media content planning:</b> calendar, captions, visual and tonal consistency. I also assisted on photoshoots from prep to on-set coordination. Running both simultaneously showed me <b>how interconnected every brand touchpoint actually is.</b></div>
+          <div class="blockquote">"In a startup, there is no one to hand off to. The content, the outreach, the shoot prep: they are all the same brief."</div>
+          <div class="dlabel">Takeaway</div>
+          <div class="dbody"><b>Converting a client is not just a sales skill.</b> It requires listening well enough to understand what someone actually needs before you offer them anything.</div>
+        </div>
+      </div>
+
+      <div class="card" onclick="toggle('c2')">
+        <div class="card-top">
+          <div>
+            <div class="card-badge b-strategy">Strategy &amp; research</div>
+            <div class="card-title">Finding what competitors left unclaimed: communication research across industries at Ogilvy</div>
+            <div class="card-org">82.5 Communications, Ogilvy · 2.5 months, 2025 · Account Management Intern</div>
+            <div class="chips">
+              <span class="chip">Competitor scan</span><span class="chip">White space</span><span class="chip">Brand strategy</span><span class="chip">TVC analysis</span>
+            </div>
+          </div>
+          <div class="card-toggle" id="t-c2">+ expand</div>
+        </div>
+        <div class="card-detail" id="c2">
+          <div class="mini-stats">
+            <div class="mini-stat"><div class="mini-stat-n">9+</div><div class="mini-stat-l">Industries researched</div></div>
+            <div class="mini-stat"><div class="mini-stat-n">26</div><div class="mini-stat-l">Sub-brands studied</div></div>
+            <div class="mini-stat"><div class="mini-stat-n">1</div><div class="mini-stat-l">Live ad shoot attended</div></div>
+          </div>
+          <div class="dlabel">What I did</div>
+          <div class="dbody">Across multiple briefs, I studied brands including <b>BKT Tyres, Pediasure, Franklin Templeton and IDBI Bank</b> alongside category competitors, ranging from tyres and banking to FMCG and health nutrition. The recurring goal: <b>identify which positioning spaces were already claimed</b> so teams could find fresh narrative territory.<br><br>I sat in on an <b>ideation session with senior strategists,</b> observed how research becomes a campaign foundation, and attended a <b>pre-production meeting and live shoot for Mother's Recipe.</b></div>
+          <div class="blockquote">"The question is not what competitors are doing. It is what space they have left open."</div>
+          <div class="dlabel">Takeaway</div>
+          <div class="dbody"><b>Competitor analysis is a strategic tool, not a research task.</b> I now read communication tone and visual language as signals of brand positioning in any category I look at.</div>
+          <div class="dnote">Specific campaign details and internal briefs are confidential.</div>
+        </div>
+      </div>
+
+      <div class="card" onclick="toggle('c3')">
+        <div class="card-top">
+          <div>
+            <div class="card-badge b-craft">Copywriting</div>
+            <div class="card-title">Saying more with less: writing copy for Franklin Templeton and Mother's Recipe at Ogilvy</div>
+            <div class="card-org">82.5 Communications, Ogilvy · 2025 · Copywriting support</div>
+            <div class="chips">
+              <span class="chip">Social copy</span><span class="chip">Outdoor copy</span><span class="chip">Consumer insight</span><span class="chip">Financial services</span><span class="chip">FMCG</span>
+            </div>
+          </div>
+          <div class="card-toggle" id="t-c3">+ expand</div>
+        </div>
+        <div class="card-detail" id="c3">
+          <div class="dlabel">What I contributed</div>
+          <div class="dbody">For <b>Franklin Templeton,</b> I developed multiple copy lines for social campaigns requiring <b>brevity, clarity and a tone that felt intelligent without being inaccessible.</b> Lines were reviewed and shortlisted by the senior copywriting team.<br><br>For <b>Mother's Recipe hoarding copy:</b> an entirely different discipline. Outdoor gives you two seconds and zero context. <b>Every word has to earn its place.</b></div>
+          <div class="copy-line">"Share your playlist, not your password."</div>
+          <div class="copy-line">"If it looks like bait, better wait."</div>
+          <div class="copy-line">"Suspicious link? Stop and think."</div>
+          <div class="blockquote">"Copy is research plus insight plus the ability to say more with less. I understood that only after writing lines that didn't make the cut and figuring out why."</div>
+          <div class="dlabel">Takeaway</div>
+          <div class="dbody"><b>Social and outdoor copy require fundamentally different thinking,</b> even when the brand and insight are the same. Both begin from a sharp consumer truth.</div>
+          <div class="dnote">Copy lines above are from personal ideation. Shortlisting decisions were made by the senior team. Specific campaign details are confidential.</div>
+        </div>
+      </div>
+
+      <div class="card" onclick="toggle('c4')">
+        <div class="card-top">
+          <div>
+            <div class="card-badge b-research">Consumer research</div>
+            <div class="card-title">Listening for the insight: primary consumer research for Himalaya</div>
+            <div class="card-org">82.5 Communications, Ogilvy · 2025 · Research support</div>
+            <div class="chips">
+              <span class="chip">Primary research</span><span class="chip">Consumer interviews</span><span class="chip">Insight development</span>
+            </div>
+          </div>
+          <div class="card-toggle" id="t-c4">+ expand</div>
+        </div>
+        <div class="card-detail" id="c4">
+          <div class="dlabel">What I did</div>
+          <div class="dbody">For a brief involving <b>Himalaya,</b> I conducted <b>primary consumer interviews</b> to understand how people actually perceived the brand, not what the brand assumed. This meant going out, asking questions, and listening carefully enough to distinguish <b>what people said from what they actually meant.</b></div>
+          <div class="blockquote">"I went in with a question guide and came out with an insight I hadn't expected. That is when I understood what primary research is actually for: not to confirm what you already think, but to surprise you."</div>
+          <div class="dlabel">Takeaway</div>
+          <div class="dbody"><b>Developing an insight from raw consumer conversation:</b> listening for patterns, identifying the emotional truth beneath a stated preference, and translating it into something a creative team can actually use.</div>
+          <div class="dnote">Research conducted as part of internship duties. Specific brief details are confidential.</div>
+        </div>
+      </div>
+
+      <div class="card" onclick="toggle('c5')">
+        <div class="card-top">
+          <div>
+            <div class="card-badge b-research">Capstone project</div>
+            <div class="card-title">What the shelf communicates: retail audit and consumer research for Naturell</div>
+            <div class="card-org">MBA Capstone · 5 months, 2025</div>
+            <div class="chips">
+              <span class="chip">Retail audit</span><span class="chip">SKU visibility</span><span class="chip">Consumer feedback</span><span class="chip">Brand strategy</span>
+            </div>
+          </div>
+          <div class="card-toggle" id="t-c5">+ expand</div>
+        </div>
+        <div class="card-detail" id="c5">
+          <div class="mini-stats">
+            <div class="mini-stat"><div class="mini-stat-n">14+</div><div class="mini-stat-l">Retail locations</div></div>
+            <div class="mini-stat"><div class="mini-stat-n">5</div><div class="mini-stat-l">Months of research</div></div>
+            <div class="mini-stat"><div class="mini-stat-n">2</div><div class="mini-stat-l">Research methods</div></div>
+          </div>
+          <div class="dlabel">The project</div>
+          <div class="dbody">A structured research engagement for <b>Naturell,</b> a health and wellness brand. Goal: understand <b>in-store performance:</b> how visible the brand was at point of sale, how well-placed products were relative to competitors, and how consumers responded at the shelf.</div>
+          <div class="dlabel">What I did</div>
+          <div class="dbody">Conducted <b>in-store audits across 14+ retail locations,</b> studying SKU placement, shelf positioning and signage. Then gathered consumer feedback to surface the gap between <b>what the brand intended and what shoppers actually perceived</b> at the moment of purchase.</div>
+          <div class="blockquote">"A brand can have the right product in the wrong place. Where something sits on a shelf is as much a brand decision as the packaging or the campaign."</div>
+          <div class="dlabel">Takeaway</div>
+          <div class="dbody"><b>Brand strategy does not end with the ad.</b> Retail is a media channel. This project gave me a grounded understanding of how brand perception is shaped by physical presence, not just communication.</div>
+        </div>
+      </div>
+
+      <div class="card" onclick="toggle('c6')">
+        <div class="card-top">
+          <div>
+            <div class="card-badge b-lead">Leadership</div>
+            <div class="card-title">Managing a brand's digital presence from the inside: Digital Marketing Head at KJSIM</div>
+            <div class="card-org">K J Somaiya Institute of Management · 2024 to 2026</div>
+            <div class="chips">
+              <span class="chip">Digital strategy</span><span class="chip">Content leadership</span><span class="chip">Brand consistency</span>
+            </div>
+          </div>
+          <div class="card-toggle" id="t-c6">+ expand</div>
+        </div>
+        <div class="card-detail" id="c6">
+          <div class="dlabel">The role</div>
+          <div class="dbody">As <b>Digital Marketing Head</b> for the MarCom and PR committee at KJSIM, I led digital strategy and content for one of Mumbai's leading business schools, managing the institution's brand as a <b>practitioner, not just a student.</b></div>
+          <div class="dlabel">What I did</div>
+          <div class="dbody">Content calendar planning and execution across platforms, ensuring <b>tonal and visual consistency,</b> coordinating across departments and events. In parallel, as <b>Digital Creative and Marketing Head for ConsultUs Club,</b> I drove the club's presence and positioning within the student community.</div>
+          <div class="blockquote">"Brand consistency is harder than brand creativity. The work is showing up the same way, every week."</div>
+        </div>
+      </div>
+
+    </div>
+
+    <footer class="footer-strip">
+      <div class="footer-name">Shruti Poddar<span>.</span></div>
+      <div class="footer-right">MBA Marketing · KJSIM · Mumbai · 2025</div>
+    </footer>
+  </div>
+</main>
+
+<!-- ============================================================
+     SKILLS
+     ============================================================ -->
+<main id="skills" class="page">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2 class="section-title">Skills</h2>
+      <span class="section-count">06 capabilities</span>
+    </div>
+    <div class="skills-grid stagger">
+      <div class="skill-block">
+        <div class="skill-name">Competitor &amp; communication analysis</div>
+        <div class="skill-desc">Studied BKT Tyres, Pediasure, Franklin Templeton and IDBI Bank across <b>9+ industries at Ogilvy.</b> Trained to find what positioning space has been left unclaimed.</div>
+        <div class="skill-bar-bg"><div class="skill-bar" style="width:90%"></div></div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-name">Consumer research</div>
+        <div class="skill-desc">Primary interviews for <b>Himalaya,</b> retail audits for <b>Naturell,</b> consumer feedback analysis. Comfortable moving from raw conversation to a usable creative insight.</div>
+        <div class="skill-bar-bg"><div class="skill-bar" style="width:82%"></div></div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-name">Copywriting</div>
+        <div class="skill-desc">Social copy for <b>Franklin Templeton</b> and hoarding copy for <b>Mother's Recipe.</b> 30+ lines written. Good copy is a compressed consumer insight, not just a clever sentence.</div>
+        <div class="skill-bar-bg"><div class="skill-bar" style="width:75%"></div></div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-name">Campaign ideation</div>
+        <div class="skill-desc">Activation ideation across online and offline touchpoints. <b>Agency-trained</b> in the brief-to-pitch process that actually produces campaigns.</div>
+        <div class="skill-bar-bg"><div class="skill-bar" style="width:72%"></div></div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-name">Lead conversion &amp; client servicing</div>
+        <div class="skill-desc"><b>₹80K converted in month 2</b> at TIGP. Experience across outreach, follow-up, relationship building and close: the full loop.</div>
+        <div class="skill-bar-bg"><div class="skill-bar" style="width:68%"></div></div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-name">Content &amp; digital strategy</div>
+        <div class="skill-desc"><b>HubSpot certified.</b> Calendar planning, platform strategy, content creation. Led digital presence for <b>two organisations simultaneously</b> at KJSIM.</div>
+        <div class="skill-bar-bg"><div class="skill-bar" style="width:78%"></div></div>
+      </div>
+    </div>
+    <div class="tools-section reveal">
+      <div class="tools-label">Tools &amp; platforms</div>
+      <span class="tool-pill">HubSpot</span>
+      <span class="tool-pill">Google Ads</span>
+      <span class="tool-pill">Power BI</span>
+      <span class="tool-pill">Meta Ads</span>
+      <span class="tool-pill">Canva</span>
+      <span class="tool-pill">Excel</span>
+      <span class="tool-pill">Notion</span>
+    </div>
+    <footer class="footer-strip">
+      <div class="footer-name">Shruti Poddar<span>.</span></div>
+      <div class="footer-right">MBA Marketing · KJSIM · Mumbai · 2025</div>
+    </footer>
+  </div>
+</main>
+
+<!-- ============================================================
+     ABOUT
+     ============================================================ -->
+<main id="about" class="page">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2 class="section-title">About</h2>
+      <span class="section-count">The full picture</span>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p class="about-label">Education</p>
+        <div class="edu-item">
+          <div class="edu-yr">2024–2026</div>
+          <div>
+            <div class="edu-name">K J Somaiya Institute of Management</div>
+            <div class="edu-deg">MBA, Marketing · Somaiya University</div>
+            <div class="edu-res">9.0 GPA (Sem 3) · Ranked 13th of 700</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-yr">2020–2023</div>
+          <div>
+            <div class="edu-name">V.G. Vaze College, Mulund</div>
+            <div class="edu-deg">BMS · Mumbai University</div>
+            <div class="edu-res">9.93 CGPA · 2nd rank in batch</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-yr">2020</div>
+          <div>
+            <div class="edu-name">V.G. Vaze College</div>
+            <div class="edu-deg">HSC · Maharashtra Board</div>
+            <div class="edu-res">90%</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="about-label">Certifications</p>
+        <div class="cert-grid">
+          <div class="cert-item"><div class="cert-name">Digital Marketing</div><div class="cert-by">HubSpot Academy</div></div>
+          <div class="cert-item"><div class="cert-name">Google Ads for Beginners</div><div class="cert-by">Coursera</div></div>
+          <div class="cert-item"><div class="cert-name">Sales Dashboard: Power BI</div><div class="cert-by">Coursera</div></div>
+          <div class="cert-item"><div class="cert-name">Critical Thinking &amp; Problem Solving</div><div class="cert-by">Tata Power SDI</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:3rem" class="reveal">
+      <p class="about-label">Accomplishments</p>
+      <div class="accom-grid">
+        <div class="accom-item">
+          <span class="accom-tag">Academic</span>
+          <span class="accom-text">Ranked <b>13th on the Student Progression Index</b> among 700 students at KJSIM · 9.0 GPA</span>
+        </div>
+        <div class="accom-item">
+          <span class="accom-tag">Academic</span>
+          <span class="accom-text"><b>2nd rank in graduating BMS batch</b> at V.G. Vaze College, Mumbai University · 9.93 CGPA</span>
+        </div>
+        <div class="accom-item">
+          <span class="accom-tag">Competition</span>
+          <span class="accom-text"><b>Runner-up at AdWartise,</b> KJSIM's advertising competition. Conceptualised, scripted and directed an on-the-spot campaign.</span>
+        </div>
+        <div class="accom-item">
+          <span class="accom-tag">Leadership</span>
+          <span class="accom-text">Student Coordinator at <b>Vaze Sanskruti:</b> planned and ran cultural events including the Annual Day at V.G. Vaze College.</span>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer-strip">
+      <div class="footer-name">Shruti Poddar<span>.</span></div>
+      <div class="footer-right">MBA Marketing · KJSIM · Mumbai · 2025</div>
+    </footer>
+  </div>
+</main>
+
+<script>
+const cur = document.getElementById('cur');
+const ring = document.getElementById('ring');
+let mx = innerWidth/2, my = innerHeight/2, rx = mx, ry = my;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+document.addEventListener('mouseover', e => { if (e.target.matches('a,button,.card,.tool-pill,.cpill,.tag')) ring.classList.add('hov'); });
+document.addEventListener('mouseout',  e => { if (e.target.matches('a,button,.card,.tool-pill,.cpill,.tag')) ring.classList.remove('hov'); });
+(function raf() {
+  rx += (mx - rx) * 0.1; ry += (my - ry) * 0.1;
+  cur.style.transform  = `translate(${mx}px,${my}px)`;
+  ring.style.transform = `translate(${rx}px,${ry}px)`;
+  requestAnimationFrame(raf);
+})();
+
+const PAGES = ['home','work','skills','about'];
+function show(id) {
+  PAGES.forEach((p, i) => {
+    document.getElementById(p).classList.toggle('visible', p === id);
+    document.querySelectorAll('.nav-btn')[i].classList.toggle('active', p === id);
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  setTimeout(triggerReveals, 80);
+}
+
+function toggle(id) {
+  const el = document.getElementById(id);
+  const tog = document.getElementById('t-' + id);
+  const open = el.classList.toggle('open');
+  tog.textContent = open ? '- collapse' : '+ expand';
+}
+
+function triggerReveals() {
+  document.querySelectorAll('.page.visible .reveal, .page.visible .stagger').forEach(el => {
+    if (el.getBoundingClientRect().top < innerHeight * 0.96) el.classList.add('in');
+  });
+}
+window.addEventListener('scroll', triggerReveals, { passive: true });
+triggerReveals();
+</script>
+</body>
+</html>
